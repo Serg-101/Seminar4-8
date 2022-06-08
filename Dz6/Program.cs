@@ -8,8 +8,8 @@ int GetNumber(string message)
     Console.Write(message);
     while (true)
     {
-        if (int.TryParse(Console.ReadLine(), out int a)) 
-            if(a>0)
+        if (int.TryParse(Console.ReadLine(), out int a))
+            if (a >= 0)
                 return a;
             else
                 System.Console.WriteLine("ошибка 002 ! Введите не отрицательное число.");
@@ -18,17 +18,14 @@ int GetNumber(string message)
     }
 }
 
-int Rekurs(int m, int n)
+int Akkerman(int m, int n)
 {
-    if (m == 0)
-        n++;
-    else
-        n = (m > 0 && n == 0) ? Rekurs(m - 1, 1):Rekurs(m - 1, Rekurs(m, n - 1));
-    return n;
+    return n = (m == 0) ? n + 1 : (m > 0 && n == 0) ? Akkerman(m - 1, 1) : Akkerman(m - 1, Akkerman(m, n - 1));
 }
 
 Console.Clear();
 int m = GetNumber("Введите чило М = ");
 int n = GetNumber("Введите чило N = ");
-int result = Rekurs(m, n);
-Console.WriteLine($"{result} результат");
+int resultAkkerman = Akkerman(m, n);
+Console.WriteLine($"{resultAkkerman} результат");
+
